@@ -66,6 +66,7 @@ body {
   display: inline-block;
   margin-top: 0px;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .card {
@@ -74,6 +75,7 @@ body {
   width: 100%;
   display: block;
   margin-top: 10px;
+  cursor: default;
 }
 
 .cardRight {

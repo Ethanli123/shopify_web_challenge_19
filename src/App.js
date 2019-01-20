@@ -16,30 +16,24 @@ class App extends Component {
 
         // do nothing if user doesn't input anything
         if (queryStr !== "") {
-            let query = queryStr.split(' '); // separate keywords in the query string
-            let res = api.search(query);     // query results (in the form of a list of indexes)
-
-            // converts indexes to tuples
-            let tuples = res.map((id) => {
-                return { id: id, isFavourite: this.state.favourites.includes(id) };
-            });
-
-            this.setState({ searchResults: tuples });
+            let query = queryStr.split(' ');       // separate keywords in the query string
+            let searchResults = api.search(query); // query results (in the form of a list of indexes
+            this.setState({ searchResults });
         } // if
     } // handleSearch
 
     // renders the list of results of the most recent search in the form of a list of Cards
     renderSearchResults = () => {
-        let list = this.state.searchResults.map((tuple) => {
-            let row = api.getById(tuple.id);
+        let list = this.state.searchResults.map(id => {
+            let row = api.getById(id);
 
             if (row) {
                 return (
-                  <Card key={tuple.id} row={row} id={tuple.id} isFavourite={tuple.isFavourite}
+                  <Card key={id} row={row} id={id} isFavourite={this.state.favourites.includes(id)}
                         favourite={this.favourite} unfavourite={this.unfavourite} />
                 );
             } else {
-                return (<div key={tuple.id}></div>);
+                return (<div key={id}></div>);
             } // if
         });
 
@@ -48,7 +42,7 @@ class App extends Component {
     
     // renders the list of favourites in the form of a list of Cards
     renderFavourites = () => {
-        let list = this.state.favourites.map((id) => {
+        let list = this.state.favourites.map(id => {
             let row = api.getById(id);
 
             if (row) {
@@ -66,52 +60,16 @@ class App extends Component {
 
     // adds a new item to the favourite list, then prompt a re-render
     favourite = (id) => {
-        let newResults = JSON.parse(JSON.stringify(this.state.searchResults)); // creates deep copy
-
-        // change the isFavourite flag of the item to be added to true
-        newResults = newResults.map((tuple) => {
-            if (tuple.id === id) {
-                return { id: tuple.id, isFavourite: true };
-            } else {
-                return tuple;
-            } // if
-        });
-
-        // update state, and prompt re-render
-        this.setState({
-            searchResults: newResults,
-            favourites: [...this.state.favourites, id]
-        });
+        this.setState({ favourites: [...this.state.favourites, id] });
     } // favourite
 
     // remove an item from the favourite list, then prompt a re-render
-    unfavourite = (id) => {
-        let newResults = JSON.parse(JSON.stringify(this.state.searchResults)); // creates deep copy
-        let newFavourites = this.state.favourites.slice();                     // creates copy of array
-
-        // change the isFavourite flag of the item to be removed to false
-        newResults = newResults.map((tuple) => {
-            if (tuple.id === id) {
-                return { id: tuple.id, isFavourite: false };
-            } else {
-                return tuple;
-            } // if
-        });
-
+    unfavourite = (id) => {  
         // remove the index of the unfavourited item from favourites
-        newFavourites = newFavourites.filter((rowId) => {
-            if (rowId !== id) {
-                return true;
-            } else {
-                return false;
-            } // if
-        });
+        let newFavourites = this.state.favourites.filter(rowId => rowId !== id);
 
         // update state, and prompt re-render
-        this.setState({
-            searchResults: newResults,
-            favourites: newFavourites
-        });
+        this.setState({ favourites: newFavourites });
     } // unfavourite
 
     render() {
