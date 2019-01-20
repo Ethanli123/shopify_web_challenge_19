@@ -4,11 +4,11 @@ import ReactHtmlParser from 'react-html-parser';
 class Card extends Component {
 
     // converts str into a react component
-    parseToDOM = (str) => {
+    parseToReact = (str) => {
         // inner nested call returns an html string with all entities replaced
         // outer call converts html string to component
         return ReactHtmlParser(ReactHtmlParser(str)); 
-    } // parseToDOM
+    } // parseToReact
 
     // favourites or unfavourites the item when user clicks on star
     handleClick = (e) => {
@@ -30,7 +30,7 @@ class Card extends Component {
                     <div className="favButton" onClick={this.handleClick} style={{ color }}>★</div>
                     <p>{this.props.row.title}</p>
                 </div>
-                <div className="cardRight">{this.parseToDOM(this.props.row.body)}</div>
+                <div className="cardRight">{this.parseToReact(this.props.row.body)}</div>
             </div>
         )
     } // render
