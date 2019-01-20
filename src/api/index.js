@@ -1,6 +1,4 @@
-import table from './table.json'; 
-
-let data = JSON.parse(JSON.stringify(table)); // parse json data into workable form
+import data from './table.json'; 
 
 // returns the item associated with the given id
 function getById(id) {
@@ -15,7 +13,7 @@ function getById(id) {
 function search(query) {
     let results = [];
 
-    table.forEach((row, index) => {
+    data.forEach((row, index) => {
         let category = row.category;
         let keywords = row.keywords;
 

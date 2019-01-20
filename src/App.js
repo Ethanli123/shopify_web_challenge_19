@@ -131,7 +131,7 @@ class App extends Component {
                 <div className="searchBar">
                     <form onSubmit={this.handleSearch}>
                         <input type="text" placeholder="Search.." name="search" />
-                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <button type="submit"><i className="fa fa-search"></i></button>
                     </form>
                 </div>
 
