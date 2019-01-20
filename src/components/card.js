@@ -2,22 +2,16 @@ import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 
 class Card extends Component {
-    constructor(props) {
-        super(props);
-
-        this.parseToDOM = this.parseToDOM.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-    } // constructor
 
     // converts str into a react component
-    parseToDOM(str) {
+    parseToDOM = (str) => {
         // inner nested call returns an html string with all entities replaced
         // outer call converts html string to component
         return ReactHtmlParser(ReactHtmlParser(str)); 
     } // parseToDOM
 
     // favourites or unfavourites the item when user clicks on star
-    handleClick(e) {
+    handleClick = (e) => {
         e.preventDefault();
 
         if (this.props.isFavourite) {

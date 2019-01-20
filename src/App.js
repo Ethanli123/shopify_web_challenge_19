@@ -4,23 +4,13 @@ import api from './api';
 import Card from './components/card';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            searchResults: [], // array of tuples (int: item index, bool: is the item bookmarked)
-            favourites: []     // array of indexes of favourited items
-        };
-
-        this.handleSearch = this.handleSearch.bind(this);
-        this.renderSearchResults = this.renderSearchResults.bind(this);
-        this.renderFavourites = this.renderFavourites.bind(this);
-        this.favourite = this.favourite.bind(this);
-        this.unfavourite = this.unfavourite.bind(this);
-    } // constructor
+    state = {
+        searchResults: [], // array of tuples (int: item index, bool: is the item bookmarked)
+        favourites: []     // array of indexes of favourited items
+    };
 
     // searches the database with the given query and stores results
-    handleSearch(e) {
+    handleSearch = (e) => {
         e.preventDefault();
         let queryStr = e.target[0].value.toLowerCase().trim(); // format input
 
@@ -39,7 +29,7 @@ class App extends Component {
     } // handleSearch
 
     // renders the list of results of the most recent search in the form of a list of Cards
-    renderSearchResults() {
+    renderSearchResults = () => {
         let list = this.state.searchResults.map((tuple) => {
             let row = api.getById(tuple.id);
 
@@ -57,7 +47,7 @@ class App extends Component {
     } // renderSearchResults
     
     // renders the list of favourites in the form of a list of Cards
-    renderFavourites() {
+    renderFavourites = () => {
         let list = this.state.favourites.map((id) => {
             let row = api.getById(id);
 
@@ -75,7 +65,7 @@ class App extends Component {
     } // renderFavourites
 
     // adds a new item to the favourite list, then prompt a re-render
-    favourite(id) {
+    favourite = (id) => {
         let newResults = JSON.parse(JSON.stringify(this.state.searchResults)); // creates deep copy
 
         // change the isFavourite flag of the item to be added to true
@@ -95,7 +85,7 @@ class App extends Component {
     } // favourite
 
     // remove an item from the favourite list, then prompt a re-render
-    unfavourite(id) {
+    unfavourite = (id) => {
         let newResults = JSON.parse(JSON.stringify(this.state.searchResults)); // creates deep copy
         let newFavourites = this.state.favourites.slice();                     // creates copy of array
 
