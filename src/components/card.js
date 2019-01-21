@@ -28,7 +28,7 @@ class Card extends Component {
             <div className="card">
                 <div className="cardLeft">
                     <div className="favButton" onClick={this.handleClick} style={{ color }}>★</div>
-                    <p>{this.props.row.title}</p>
+                    <p className="title">{this.props.row.title}</p>
                 </div>
                 <div className="cardRight">{this.parseToReact(this.props.row.body)}</div>
             </div>

@@ -8,24 +8,24 @@ body {
 
 .banner {
   display: flex;
-  height: 150px;
   justify-content: center;
   align-items:center;
-  font-size: 40px;
   color: white;
   background-color:  #1E5B93; 
   background-image: linear-gradient(to right, #1E5B93 , #23975E); 
+  height: 150px;
+  font-size: 40px;
 }
 
 .searchBar form button {
+  border: none;
+  border-left: none;
+  color: white;
+  background-color: #23975E;
+  font-size: 20px;
   width: 60px;
   height: 60px;
   padding: 10px;
-  background-color: #23975E;
-  color: white;
-  font-size: 20px;
-  border: none;
-  border-left: none;
   margin-top: 10px;
   margin-left: 10px;
 }
@@ -35,25 +35,25 @@ body {
 }
 
 .searchBar form input {
-  padding: 10px;
-  font-size: 20px;
-  border: 1px solid grey;
   float: left;
-  width: 92%;
   background: #f1f1f1;
+  border: 1px solid grey;
+  border: none;
+  font-size: 20px;
+  width: 92%;
+  height: 40px;
+  padding: 10px;
   margin-left: 10px;
   margin-top: 10px;
-  border: none;
-  height: 40px;
+  
 }
 
 .favs {
-  margin-top: 50px;
   position: absolute;
   background-color: #F7FEFA;
-  height: 100%;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  margin-top: 50px;
 }
 
 .favs h1 {
@@ -61,48 +61,46 @@ body {
   margin-left: 25px;
 }
 
-.favButton {
-  font-size: 25px;
-  display: inline-block;
-  margin-top: 0px;
-  margin-left: 10px;
-  cursor: pointer;
+.card {
+  cursor: default;
+  display: block;
+  width: 1250px;
+  margin-top: 20x;
+  margin-left: 20px;
 }
 
-.card {
-  height: 100px;
-  min-height: 100px;
-  width: 100%;
-  display: block;
-  margin-top: 10px;
-  cursor: default;
-}
 
 .cardRight {
   display: inline-block;
-  margin-right: 0px;
-  margin-top: 0px;
+  vertical-align: top;
+  font-size: 16px;
   width: 65%;
   height: 100%;
-  font-size: 16px;
-  vertical-align: top;
 }
 
 .cardLeft {
   display: inline-block;
-  width: 30%;
-  margin-left: 0px;
-  margin-top: 0px;
-  height: 100%;
   vertical-align: top;
+  width: 30%;
+  height: 100%;
 }
 
-.card div p {
-  font-size: 16px;
+.favButton {
   display: inline-block;
+  cursor: pointer;
+  font-size: 25px;
+  height: 100%;
   margin-top: 0px;
-  margin-left: 10px;
 }
+
+.title {
+  display: inline-block;
+  font-size: 16px;
+  width: 80%;
+  height: 100%;
+  margin-left: 10px;
+  margin-bottom: 0px;
+} 
 
 
 
