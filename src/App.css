@@ -86,20 +86,22 @@ body {
 }
 
 .favButton {
+  position: absolute;
   display: inline-block;
   cursor: pointer;
   font-size: 25px;
-  height: 100%;
-  margin-top: 0px;
+  height: 25px;
+  width: 25px;
+  margin-left: 0px;
+  margin-top: 10px;
 }
 
 .title {
+  position: absolute;
   display: inline-block;
   font-size: 16px;
-  width: 80%;
-  height: 100%;
-  margin-left: 10px;
-  margin-bottom: 0px;
+  width: 300px;
+  margin-left: 35px;
 } 
 
 
