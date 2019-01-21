@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
-import api from './api';
 import Card from './components/card';
+import api from './api';
+import './App.css';
 
 class App extends Component {
     state = {
-        searchResults: [], // array of tuples (int: item index, bool: is the item bookmarked)
+        searchResults: [], // array of indexes of current search results
         favourites: []     // array of indexes of favourited items
     };
 
@@ -17,8 +17,8 @@ class App extends Component {
         // do nothing if user doesn't input anything
         if (queryStr !== "") {
             let query = queryStr.split(' ');       // separate keywords in the query string
-            let searchResults = api.search(query); // query results (in the form of a list of indexes
-            this.setState({ searchResults });
+            let searchResults = api.search(query); // query results (in the form of a list of indexes)
+            this.setState({ searchResults });      // store results
         } // if
     } // handleSearch
 
@@ -58,12 +58,12 @@ class App extends Component {
         return list;
     } // renderFavourites
 
-    // adds a new item to the favourite list, then prompt a re-render
+    // adds a new item to the favourite list, then prompts a re-render
     favourite = (id) => {
         this.setState({ favourites: [...this.state.favourites, id] });
     } // favourite
 
-    // remove an item from the favourite list, then prompt a re-render
+    // removes an item from the favourite list, then prompts a re-render
     unfavourite = (id) => {  
         // remove the index of the unfavourited item from favourites
         let newFavourites = this.state.favourites.filter(rowId => rowId !== id);
